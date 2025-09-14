@@ -1,0 +1,136 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Photo - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap-icons.css'%}" rel="stylesheet">
+  <link href="{% static 'css/swiper-bundle.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css'%}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/ritta.css'%}" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css'%}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/demo.css'%}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/y.css'%}" />
+		<script src="{% static 'js/modernizr.custom.js'%}"></script>
+<style>
+
+</style>
+</head>
+<body>
+
+ 
+
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+
+      <a href="{%url 'grapher:home'%}" class="logo d-flex align-items-center  me-auto me-lg-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <i class="bi bi-camera"></i>
+        <h1>Photography</h1>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="{%url 'grapher:home'%}" class="active">Home</a></li>
+          <li><a href="{%url 'grapher:about'%}">About Us</a></li>
+          <li><a href="{%url 'grapher:learn'%}">Learn About PHotoGraphY</a></li>
+          <li><a href="{%url 'grapher:workshops'%}">workshops</a></li>
+          {% for item in graphers %}
+          {% if item.first == request.user.username|lower %}
+
+            <li><a href="{% url 'grapher:call' item.id %}">Call Us</a></li>
+
+          {% endif %}
+          {% endfor %}        </ul>
+      </nav><!-- .navbar -->
+
+      <div class="header-social-links">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+  </header><!-- End Header -->
+        <!--profiles-->
+<div class="wrapper ">
+				<ul class="stage clearfix">
+           {%for p in prof%}
+
+					<li class="scene" >
+						<div class="movie" onclick="return true">
+							<div class="poster" >
+              <img src="{{p.image.url}}" style="width: 100%;height: 100%;object-fit: cover;padding:20px;">
+                   </div>
+							<div class="info">
+								<header>
+									<h1>{{p.first}} {{p.last}}</h1>
+								</header>
+								<p>
+									About Me:{{p.about}}<br>
+                  Waiting time:{{p.waiting_time}}<br>
+                  Price Of Photo Session:<span style="color:#858fff;">{{p.price}} TH.SP</span><br>
+                  My address:<span style="color: #241d8b;">{{p.address}}</span><br>
+                  Take A Look At My Work:<a class="btn ml-2" href="{%url 'grapher:look' p.id %}"style="#858fff; font-size:20px;font-weight: bold;" >Look</a></p>
+								</p>
+							</div>
+						</div>
+					</li>
+           {%endfor%}
+
+          </ul>
+          </div>
+       
+
+    </div>
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Photography</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="https://RRMY.com/">RRMY.com</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+  
+  
+    <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js'%}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js'%}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js'%}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js'%}"></script>
+
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+    <script src="{% static 'js/popper.min.js'%}"></script>
+    <script src="{% static 'js/code.jquery.com_jquery-3.7.1.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.js"></script'%}"></script>
+    
+</body>
+</html>

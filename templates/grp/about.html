@@ -1,0 +1,373 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Photo - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png'%}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap-icons.css'%}" rel="stylesheet">
+  <link href="{% static 'css/swiper-bundle.min.css'%}" rel="stylesheet">
+  <link href="{% static 'css/glightbox.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css'%}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/ritta.css'%}" rel="stylesheet">
+    <link href="{% static 'css/addabout.css'%}" rel="stylesheet">
+<style>
+h1,p{
+  color:#000;
+}
+.reveal{
+  position:relative;
+  transform:translateY(120px);
+  opacity:0;
+  transition:all 2s ease;
+}
+.reveal.active{
+  transform:translateY(0px);
+  opacity:1;
+}
+</style>
+
+</head>
+<body>
+
+ 
+
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+
+      <a href="{%url 'grapher:home'%}" class="logo d-flex align-items-center  me-auto me-lg-0">
+        <i class="bi bi-camera"></i>
+        <h1>Photography</h1>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="{%url 'grapher:home'%}" class="active">Home</a></li>
+          <li><a href="{%url 'grapher:about'%}">About Us</a></li>
+          <li><a href="{%url 'grapher:learn'%}">Learn About PHotoGraphY</a></li>
+          <li><a href="{%url 'grapher:workshops'%}">workshops</a></li>
+          {% for item in graphers %}
+          {% if item.first == request.user.username|lower %}
+
+              <li><a href="{% url 'grapher:call' item.id %}">Call Us</a></li>
+
+          {% endif %}
+          {% endfor %}        </ul>
+      </nav><!-- .navbar -->
+
+      <div class="header-social-links">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main" data-aos="fade" data-aos-delay="1500">
+
+    <!-- ======= End Page Header ======= -->
+    <div class="page-header d-flex align-items-center">
+      <div class="container position-relative">
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-6 text-center">
+            <h1>About Us</h1>
+            <p>Welcome to our website..</p>
+
+            {% for item in graphers %}
+            {% if item.first == request.user.username|lower %}
+
+            <a class="cta-btn" href="{% url 'grapher:call' item.id %}">Available for you</a>
+
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div><!-- End Page Header -->
+    
+ 
+        <!-- main -->
+          <section class = "section-one">
+            <div class = "containerss">
+            <div class="row">
+            <div class="col">
+                <div class = "sec-one-left">
+                    <!-- image here -->
+                    <div>
+                        <h3>Photography</h3>
+                        <p style="color:#fff;">see things in anouthor way </p>
+                        
+                    </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class = "sec-one-right">
+                    <div class = "work-content">
+                        <h3>AMAZING TEAM WORK WITH PROFESSIONAL PHOTOGRAPHER</h3>
+                        <p>   Welcome to our photography website. On this site, we offer you many photographs that were taken with dedicated cameras and also photos that were taken with a mobile phone camera, whether of people, products
+             ,<br> children, food, or anything related to fashion. Like you, 
+             we give you an overview of photography on the learn page. about photography
+              Below we present to you a number of our distinguished candidates and advise you to 
+              <br>book an appointment with them for your next photography sessions.</p>
+                        
+                    </div>
+                    <div class = "work-imgs">
+                        <div class = "work-img-1">
+                            <!--image here-->
+                        </div>
+                        <div class = "work-img-2">
+                            <!-- image here -->
+                        </div>
+                    </div>
+                    <h3>"Taking an image, freezing a moment, reveals how rich reality truly is."</h3>
+                </div>
+            </div>
+            </div>
+            </div>
+        </section>
+
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing">
+      <div class="container reveal">
+
+        <div class="section-header">
+          <h2>Prices</h2>
+          <p>Check Photo Sessions Pricing</p>
+        </div>
+
+        <div class="row gy-4 gx-lg-5">
+
+          <div class="col-lg-6">
+            <div class="pricing-item d-flex justify-content-between">
+              <h3>Portrait Photography</h3>
+              <h4>20.000SP</h4>
+            </div>
+          </div><!-- End Pricing Item -->
+
+          <div class="col-lg-6">
+            <div class="pricing-item d-flex justify-content-between">
+              <h3>Fashion Photography</h3>
+              <h4>60.000SP</h4>
+            </div>
+          </div><!-- End Pricing Item -->
+
+          <div class="col-lg-6">
+            <div class="pricing-item d-flex justify-content-between">
+              <h3>Nature Photography</h3>
+              <h4>20.000SP</h4>
+            </div>
+          </div><!-- End Pricing Item -->
+
+          <div class="col-lg-6">
+            <div class="pricing-item d-flex justify-content-between">
+              <h3>Food Photography</h3>
+              <h4>40.000SP</h4>
+            </div>
+          </div><!-- End Pricing Item -->
+
+          <div class="col-lg-6">
+            <div class="pricing-item d-flex justify-content-between">
+              <h3>Wedding Photography</h3>
+              <h4>50.000SP</h4>
+            </div>
+          </div><!-- End Pricing Item -->
+
+          <div class="col-lg-6">
+            <div class="pricing-item d-flex justify-content-between">
+              <h3>birthday Photography</h3>
+              <h4>30.000SP</h4>
+            </div>
+          </div><!-- End Pricing Item -->
+
+        </div>
+    </section><!-- End Pricing Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container reveal">
+
+        <div class="section-header">
+          <h2>Look</h2>
+          <p>Our Best Photographers</p>
+        </div>
+
+        <div class="slides-3 swiper">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                   <div class="profile mt-auto">
+                  <img src="{% static 'img/bz.jpg' %}" class="testimonial-img" alt="">
+                  <h3>Bashar Zoan</h3>
+                  <h4>Weeding Photographer</h4>
+                </div>
+                <p>
+              For Weeding Photo Sessions
+                </p>
+
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                  <div class="profile mt-auto">
+                  <img src="{% static 'img/ray.jpg' %}" class="testimonial-img" alt="">
+                  <h3>Rayan Fadi</h3>
+                  <h4>Fashion PHotoGrapheR</h4>
+                </div>
+                <p>
+              For Fashion Photo Sessions
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                 <div class="profile mt-auto">
+                  <img src="{% static 'img/p9.jpg' %}" class="testimonial-img" alt="">
+                  <h3>Assel Tarek</h3>
+                  <h4>Birthday Photographer</h4>
+                </div>
+                <p>
+              For Birthday Photo Sessions
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                 <div class="profile mt-auto">
+                  <img src="{% static 'img/ka.jpg' %}" class="testimonial-img" alt="">
+                  <h3>katia</h3>
+                  <h4>Products PHotographer</h4>
+                </div>
+                <p>
+              For Products Photo Sessions
+                </p>
+               
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                 <div class="profile mt-auto">
+                  <img src="{% static 'img/an.jpg' %}" class="testimonial-img" alt="">
+                  <h3>Angel Koussa</h3>
+                  <h4>Food PHotoGrapheR</h4>
+                </div>
+                <p>
+              For Food Photo Sessions
+
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Photography</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+      
+        Designed by <a href="https://RRMY.com/">RRMY</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader">
+    <div class="line"></div>
+  </div>
+  <script>
+     window.addEventListener('scroll',reveal);
+
+     function reveal(){
+      var reveals=document.querySelectorAll('.reveal');
+      for(var i=0;i < reveals.length;i++){
+        var windowheight=window.innerHeight;
+        var revealtop=reveals[i].getBoundingClientRect().top;
+        var revealpoint=150;
+
+        if(revealtop < windowheight-revealpoint){
+          reveals[i].classList.add('active');
+        }
+        else{
+          reveals[i].classList.remove('active');
+
+        }
+
+
+      }
+     }
+    </script>
+
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js'%}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js'%}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js'%}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js'%}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+ 
+  <!-- Vendor JS Files -->
+
+ <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/code.jquery.com_jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+  <!-- Template Main JS File -->
+
+</body>
+
+</html>

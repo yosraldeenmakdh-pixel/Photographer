@@ -1,0 +1,144 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Photo - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap-icons.css'%}" rel="stylesheet">
+  <link href="{% static 'css/swiper-bundle.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css'%}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/ritta.css'%}" rel="stylesheet">
+    <link href="{% static 'css/dd.css'%}" rel="stylesheet">
+
+  <style>
+ p,a{
+  color:#000;
+ }
+  </style>
+</head>
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+
+      <a href="{%url 'grapher:home'%}" class="logo d-flex align-items-center  me-auto me-lg-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <i class="bi bi-camera"></i>
+        <h1>Photography</h1>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="{%url 'grapher:home'%}" class="active">Home</a></li>
+          <li><a href="{%url 'grapher:about'%}">About Us</a></li>
+          <li><a href="{%url 'grapher:learn'%}">Learn About PHotoGraphY</a></li>
+          <li><a href="{%url 'grapher:workshops'%}">workshops</a></li>
+          {% for item in graphers %}
+          {% if item.first == request.user.username|lower %}
+
+            <li><a href="{% url 'grapher:call' item.id %}">Call Us</a></li>
+
+          {% endif %}
+          {% endfor %}        </ul>
+      </nav><!-- .navbar -->
+
+      <div class="header-social-links">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+  </header>
+  <!-- End Header -->
+      <div class="containerd">
+        <div class="contact-form" style="width:600px;">
+          <span class="circle one"></span>
+          <span class="circle two"></span>
+
+          <form  method="POST"   autocomplete=off>
+           
+            {% csrf_token %}
+            <h3 class="title">Login </h3>
+            <div class="input-container">
+              <input type="text" name="username" placeholder="your name" class="input" />
+              {% comment %} <label for="">Username</label> {% endcomment %}
+              {% comment %} <span>First Name</span> {% endcomment %}
+            </div>
+           
+            {% comment %} <div class="input-container">
+              <input type="text" name="name"  required class="input" />
+              <label for="">Last Name</label>
+              <span>Last Name</span>
+            </div> {% endcomment %}
+             <div class="input-container">
+              <input type="password"  name="password" placeholder="your own letters" class="input" />
+              {% comment %} <label for="">Password</label> {% endcomment %}
+              {% comment %} <span>Password</span> {% endcomment %}
+            </div>
+
+            <script src="https://www.google.com/recaptcha/api.js"></script>
+            <div class="g-recaptcha" data-sitekey="6LfZ8CUqAAAAAOW9VfZ9hcg6FuC6IUfcJv0calWX" ></div>
+            <br>
+
+            <input type="submit" value="Send" class="btn"  />
+            <br><br>
+            <div class="d-flex align-items-center justify-content pb-4">
+              <p class="mb-0 me-1">Don't have an account?</p>
+              <button type="button" class="btn btn-outline">
+                <h6><a href="{% url 'grapher:register' %}">Create new</a></h6>
+              </button>
+            </div>
+            <br><br>
+            {% for item in messages %}
+              <span>{{item}}</span>
+            {% endfor %}
+            <br>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+</div>
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Photography</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="https://RRMY.com/">RRMY</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+
+  <!-- Template Main JS File -->
+    <script src="{% static 'js/appp.js'%}"></script>
+
+
+</body>
+
+</html>

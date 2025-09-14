@@ -1,0 +1,512 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Photography</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png'%}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css'%}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/mainr.css'%}" rel="stylesheet">
+  
+<style>
+  --------------------------------------------------------------*/
+  .footer {
+    margin-top: 30px;
+    padding: 30px 0;
+    font-size: 14px;
+    border-top: 1px solid rgba(10, 10, 10, 0.979);
+  }
+  
+  .footer .copyright {
+    text-align: center;
+    color: rgba(33, 206, 192, 0.8);
+  }
+  
+  .footer .credits {
+    padding-top: 6px;
+    text-align: center;
+    font-size: 13px;
+    color: rgba(12, 11, 11, 0.8);
+  }
+  
+  .footer .credits a {
+    color: black;
+  }
+  
+
+</style>
+</head>
+
+<body >
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center  me-auto me-lg-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <i class="bi bi-camera"></i>
+        <h1>Photography</h1>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+         <li><a href="{%url 'grapher:home'%}" class="active">Home</a></li>
+          <li><a href="{%url 'grapher:about'%}">About Us</a></li>
+          <li><a href="{%url 'grapher:learn'%}">Learn About PHotoGraphY</a></li>
+          <li><a href="{%url 'grapher:workshops'%}">workshops</a></li>
+          {% for item in graphers %}
+          {% if item.first == request.user.username|lower %}
+
+            <li><a href="{% url 'grapher:call' item.id %}">Call Us</a></li>
+
+          {% endif %}
+          {% endfor %}        </ul>
+      </nav><!-- .navbar -->
+
+      <div class="header-social-links">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main" data-aos="fade" data-aos-delay="1500">
+
+    <!-- ======= End Page Header ======= -->
+    <div class="page-header d-flex align-items-left">
+      <div class="container position-relative">
+        <div class="row d-flex justify-content-left">
+          <div class="col-lg-12 text-left">
+            <h1> <br><span class = "typewrite" data-loop = "yes" data-speed = "100" data-delay = "2000" data-words = '["workshops for you" ,"Training Courses for you"]'></span></h1>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- End Page Header -->
+     <!-- ======= About Section ======= -->
+   <section id="about" class="about">
+    <div class="container" >
+      <div class="row">
+        <div class="col-lg-6 order-1 order-lg-2"  >
+          <img src="{% static 'assets/imgs/11.jpg'%}" class="img-fluid" alt="">
+        </div>
+        <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+        <p style="color: black;" >In our website, we usually offer workshops for customers who are interested in learning photography. The workshops can be either online or offline, depending on the customer's preference. These workshops are conducted by professional photographers on our website,Discover the beauty of photography with our specialized workshops! We offer a series of live lessons and interactive sessions with industry experts, where you will learn how to efficiently use the camera, understand the basics of artistic composition, and acquire skills in image processing with excellence.
+        </p>
+        </div>
+    </div>
+    </div>
+   </section>
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+        <div class="section-header"  data-aos="fade-up">
+          <h2>the workshops that we usually offer </h2>
+            </div>
+        <div class="row gy-4">
+
+          <div class="col-xl-3 col-md-6 d-flex"  data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative shadow">
+              <i class="bi bi-image"></i>
+              <h4 class="stretched-link">Beginner educational </h4>
+              <p>These workshops cover the basics of photography, such as camera familiarization and settings,understanding fundamental concepts of ligth and exposure .</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex"  data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative shadow">
+              <i class="bi bi-person-bounding-box"></i>
+              <h4 class="stretched-link">Specialized workshops</h4>
+              <p>These workshops target experienced photographers who want to enhance their skills in specific areas such as artistic photography .</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex"  data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item position-relative shadow">
+              <i class="bi bi-camera2"></i>
+              <h4 class="stretched-link">Online workshops</h4>
+              <p>Training workshops can be offered online for individuals who cannot attend in-person sessions,these workshops include video lessons ,interactive online session, and personal feedback from the trainer . </p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex"  data-aos="fade-up" data-aos-delay="500">
+            <div class="service-item position-relative shadow">
+              <i class="bi bi-camera-reels-fill"></i>
+              <h4 class="stretched-link">Custom workshops</h4>
+              <p>custom workshops can be organized based on client requests, such as workshops for landscape photography ,food photography or product photography ..</p>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+    
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts section-bg">
+      <div class="container">
+
+        <div class="row counters">
+
+          <div class="col-lg-4 col-6 text-center"  data-aos="fade-up" data-aos-delay="100">
+            <span data-purecounter-start="0" data-purecounter-end="1232" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Trainee</p>
+          </div>
+
+          <div class="col-lg-4 col-6 text-center"  data-aos="fade-up" data-aos-delay="200">
+            <span data-purecounter-start="0" data-purecounter-end="64" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Courses</p>
+          </div>
+
+          <div class="col-lg-4 col-6 text-center"  data-aos="fade-up" data-aos-delay="300">
+            <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Trainers</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+     <!---gallary section-->
+  
+  <section id="gallery" class="gallery">
+    <div class="container position-relative">
+      <div class="row d-flex justify-content-center">
+      <div class="col-lg-12 text-center"  data-aos="fade-up" data-aos-delay="200">
+        <div class="section-title" id="title">
+        <h4> photos from the workshops we have conducted</h4>
+        </div>
+      </div>
+      </div>
+      </div>
+    <div class="container-fluid">
+      <div class="row gy-4 justify-content-center" data-aos="fade-up" data-aos-delay="300">
+        <div class="col-xl-3 col-lg-4 col-md-6"  >
+          <div class="gallery-item h-100">
+            <img src="{% static 'assets/imgs/2.jpeg'%}" class="img-fluid" alt="">
+            <div class="gallery-links d-flex align-items-center justify-content-center">
+              <a href="{% static 'assets/imgs/2.jpeg'%}" title="Gallery 1" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+             
+            </div>
+          </div>
+        </div><!-- End Gallery Item -->
+        <div class="col-xl-3 col-lg-4 col-md-6">
+          <div class="gallery-item h-100">
+            <img src="{% static 'assets/imgs/fashion+photographers+sydney.jpg'%}" class="img-fluid" alt="">
+            <div class="gallery-links d-flex align-items-center justify-content-center">
+              <a href="{% static 'assets/imgs/fashion+photographers+sydney.jpg'%}" title="Gallery 2" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+              
+            </div>
+          </div>
+        </div><!-- End Gallery Item -->
+        <div class="col-xl-3 col-lg-4 col-md-6">
+          <div class="gallery-item h-100">
+            <img src="{% static 'assets/imgs/Food-photography-guide.jpeg'%}" class="img-fluid" alt="">
+            <div class="gallery-links d-flex align-items-center justify-content-center">
+              <a href="{% static 'assets/imgs/Food-photography-guide.jpeg'%}" title="Gallery 3" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+             
+            </div>
+          </div>
+        </div><!-- End Gallery Item -->
+        <div class="col-xl-3 col-lg-4 col-md-6">
+          <div class="gallery-item h-100">
+            <img src="{% static 'assets/imgs/group2-1.jpg'%}" class="img-fluid" alt="">
+            <div class="gallery-links d-flex align-items-center justify-content-center">
+              <a href="{% static 'assets/imgs/group2-1.jpg'%}" title="Gallery 4" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+              
+            </div>
+          </div>
+        </div><!-- End Gallery Item -->
+        <div class="col-xl-3 col-lg-4 col-md-6">
+          <div class="gallery-item h-100">
+            <img src="{% static 'assets/imgs/image-classes-640w.jpg'%}" class="img-fluid" alt="">
+            <div class="gallery-links d-flex align-items-center justify-content-center">
+              <a href="{% static 'assets/imgs/image-classes-640w.jpg'%}" title="Gallery 5" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+              
+            </div>
+          </div>
+        </div><!-- End Gallery Item -->
+        <div class="col-xl-3 col-lg-4 col-md-6">
+          <div class="gallery-item h-100">
+            <img src="{% static 'assets/imgs/photo-id-2005845246021-photographer-working-with-his-team-during-a-photo-shoot-in-a-studio.jpg'%}" class="img-fluid" alt="">
+            <div class="gallery-links d-flex align-items-center justify-content-center">
+              <a href="{% static 'assets/imgs/photo-id-2005845246021-photographer-working-with-his-team-during-a-photo-shoot-in-a-studio.jpg'%}" title="Gallery 6" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+              
+            </div>
+          </div>
+        </div><!-- End Gallery Item -->
+        <div class="col-xl-3 col-lg-4 col-md-6">
+          <div class="gallery-item h-100">
+            <img src="{% static 'assets/imgs/photography-studio-05.jpg'%}" class="img-fluid" alt="">
+            <div class="gallery-links d-flex align-items-center justify-content-center">
+              <a href="{% static 'assets/imgs/photography-studio-05.jpg'%}" title="Gallery 6" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+              
+            </div>
+          </div>
+        </div><!-- End Gallery Item -->
+    
+      
+        <div class="col-xl-3 col-lg-4 col-md-6">
+          <div class="gallery-item h-100">
+            <img src="{% static 'assets/imgs/wildlife-photography-workshop-bangalore-3.jpg'%}" class="img-fluid" alt="">
+            <div class="gallery-links d-flex align-items-center justify-content-center">
+              <a href="{% static 'assets/imgs/wildlife-photography-workshop-bangalore-3.jpg'%}" title="Gallery 9" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Gallery Item -->
+  <!---End gallery-->
+
+  <!--play list -->
+  <div class="section-title" id="vidtitle" data-aos="fade-up" >
+    <h4 >Some videos about online Courses </h4>
+  </div>
+  <div class="container" id="play" data-aos="fade-up" >
+    <p >these videos will be an examples of how you can learn about photography basic and camera lense and how to take a perfect photos with professional photographers online</p>
+
+    <div class="main-video-container"  data-aos="fade-up" data-aos-delay="200">
+       <video src="{% static 'assets/imgs/80_ Of Photography Basics In Just 10 Minutes(360P).mp4'%}" loop controls class="main-video"></video>
+       <h3 class="main-vid-title">80_Of Photography Basics In Just 10 Minutes</h3>
+    </div>
+ 
+    <div class="video-list-container"  data-aos="fade-up" data-aos-delay="200">
+ 
+       <div class="list active">
+          <video src="{% static 'assets/imgs/Master Product Photography in Minutes -- Here_s How_(720P_HD).mp4'%}" class="list-video"></video>
+          <h3 class="list-title">Master Product Photography</h3>
+       </div>
+ 
+       <div class="list">
+          <video src="{% static 'assets/imgs/Best Budget Cameras in 2023 _ Best Cheap Camera For Photo _ Video(360P).mp4'%}" class="list-video"></video>
+          <h3 class="list-title">Best Budget Cameras in 2023_Best Cheap Camera For Photo</h3>
+       </div>
+ 
+       <div class="list">
+          <video src="{% static 'assets/imgs/BEST Camera For Beginners_ _ how to choose right(360P).mp4'%}" class="list-video"></video>
+          <h3 class="list-title">BEST Camera For Beginners</h3>
+       </div>
+ 
+       <div class="list">
+          <video src="{% static 'img/rm1.mp4'%}" class="list-video"></video>
+          <h3 class="list-title">ULTIMATE Beginner_s Guide To CAMERA LENSES</h3>
+       </div>
+ 
+       <div class="list">
+          <video src="{% static 'assets/imgs/Exposure Explained Simply - Aperture_ Shutter Speed_ ISO(720P_HD).mp4'%}" class="list-video"></video>
+          <h3 class="list-title">Exposure Explained Simply - Aperture_ Shutter Speed</h3>
+       </div>
+ 
+       <div class="list">
+          <video src="{% static 'assets/imgs/COMPOSITION - Most Important thing in PHOTOGRAPHY_(360P).mp4'%}" class="list-video"></video>
+          <h3 class="list-title">COMPOSITION - Most Important thing in PHOTOGRAPHY</h3>
+       </div>
+ 
+       <div class="list">
+          <video src="{% static 'assets/imgs/Camera Lenses Explained For Beginners (What Do The Numbers Mean_)(360P).mp4'%}" class="list-video"></video>
+          <h3 class="list-title">Camera Lenses Explained For Beginners (What Do The Numbers Mean_)</h3>
+       </div>
+ 
+       <div class="list">
+          <video src="{% static 'assets/imgs/PHOTOGRAPHY BASICS in 10 MINUTES(720P_HD).mp4'%}" class="list-video"></video>
+          <h3 class="list-title">PHOTOGRAPHY BASICS</h3>
+       </div>
+ 
+       <div class="list">
+          <video src="{% static 'assets/imgs/The ONLY 3 Lenses You Need For PRO Videos_(360P).mp4'%}" class="list-video"></video>
+          <h3 class="list-title">The ONLY 3 Lenses You Need For PRO Videos</h3>
+       </div>
+ 
+    </div>
+ 
+ </div>
+<script>
+let listvid=document.querySelectorAll('.video-list-container .list');
+let mainvid=document.querySelector('.main-video-container video');
+let title=document.querySelector('.main-video-container .main-vid-title');
+listvid.forEach(video =>{
+  video.onclick=() =>{
+    listvid.forEach(list =>list.classList.remove('active'));
+    video.classList.add('active');
+    if(video.classList.contains('active')){
+      let src=video.children[0].getAttribute('src');
+      mainvid.src=src;
+      let text=video.children[1].innerHTML;
+      title.innerHTML=text;
+    };
+
+
+  };
+
+});
+
+</script>
+      
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Testimonials</h2>
+          <p>What are they saying</p>
+        </div>
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+         
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item" >
+                  <img src="{% static 'assets/img/testimonials/avatar-1.png'%}" class="testimonial-img" alt="">
+                  <h3>Saul Goodman</h3>
+                  <h4></h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    what a beautiful website, now i have a passion to learn about photography and about the cameras and how can i take a professional photos because of them
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide" >
+              <div class="testimonial-wrap">
+                <div class="testimonial-item" >
+                  <img src="{% static 'assets/img/testimonials/avatar-2.png'%}" class="testimonial-img" alt="">
+                  <h3>Sara Wilsson</h3>
+                  <h4>photographer</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    I am now a photographer because of this courses , the trainers and the online courses holps me alot to be what i am now 
+                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="{% static 'assets/img/testimonials/avatar-3.png'%}" class="testimonial-img" alt="">
+                  <h3>Jena Karlis</h3>
+                  <h4></h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    I am an old client at this website, this website amazing i learned photography because of thier courses especially the online Courses they helps me alot i am thanks for them.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item ">
+                  <img src="{% static 'assets/img/testimonials/avatar-4.png'%}" class="testimonial-img" alt="">
+                  <h3>Matt Brandon</h3>
+                  <h4>new Trainee</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    I am one of the new Trainees at the Beginner educational and i litterly have no idea about the photography but after few sessions of the Course i got alot of Useful information and i will become a professional photographer
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="{% static 'assets/img/testimonials/avatar-5.png'%}" class="testimonial-img" alt="">
+                  <h3>John Larson</h3>
+                  <h4>Trainee</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                   it is an amazing website , i was one of the Trainees in the Beginner educational courser and this Course and the professional trainers helps me to become a photographer without knowing any thing in the cameras 
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+
+   
+
+
+
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+    </main><!-- End #main -->
+   
+
+ <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Photography</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="https://RRMY.com/">RRMY</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+ 
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js'%}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js'%}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js'%}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js'%}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js'%}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js'%}"></script>
+  <script src = "{% static 'typewriting-master/typewriting.js'%}"></script>
+  
+
+</body>
+
+</html>

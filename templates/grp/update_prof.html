@@ -1,0 +1,182 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Page</title>
+    <link rel="stylesheet" href="{% static 'css/design.css'%}">
+</head>
+<body>
+        <!--navbar-->
+        <nav class="navbar navbar-expand fixed-top ">
+            <a href="" class="navbar-brand text-primary" draggable="false">LOGO</a>
+            <ul class="navbar-nav  ml-auto ">
+                <li class="nav-item active "><a href="{%url 'grapher:home'%}" class="nav-link  btn-outline-primary">Home</a></li>
+                <li class="nav-item active "><a href="" class="nav-link   btn-outline-primary">About Us</a></li>
+                <li class="nav-item active "><a href="{%url 'grapher:learn'%}" class="nav-link  btn-outline-primary">Learn About PHotoGraphY</a></li>
+                {% for item in graphers %}
+                {% if item.first == request.user.username|lower %}
+      
+                  <li><a href="{% url 'grapher:call' item.id %}">Call Us</a></li>
+      
+                {% endif %}
+                {% endfor %}                <li class="nav-item active "><a href="{%url 'grapher:log'%}" class="nav-link  btn-outline-primary">Login</a></li>
+
+    
+            </ul>
+        </nav>
+        <!--end nav-->
+        <div class="container  text-primary  " style="height:500px;width: 50%;background-image: url('{% static 'img/10.jpg' %}');margin-top: 100px;border-radius: 10px;">
+        <form method='POST' enctype ="multipart/form-data">
+            {% csrf_token %}
+  <div class="form-row">
+    <div class="col">
+        <p >First Name </p> 
+         
+        <div class="form-group">
+          {{new_grapher.first}}
+           
+        </div>   
+
+    </div>
+    <div class="col">
+    <p >Last Name </p>  
+        <div class="form-group">
+          {{new_grapher.last}}
+           
+        </div>  
+
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+                <p >About Me </p>    
+
+         
+        <div class="form-group">
+          {{new_grapher.about}}
+           
+        </div>   
+
+    </div>
+    <div class="col">
+      <p >Waiting Time </p>    
+
+        <div class="form-group">
+          {{new_grapher.waiting_time}}
+           
+        </div>  
+
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="col">
+          <p >Work Hours Number</p>    
+
+         
+        <div class="form-group">
+          {{new_grapher.work}}
+           
+        </div>   
+
+    </div>
+    <div class="col">
+               <p >Price Of Photo Session</p>    
+
+        <div class="form-group">
+          {{new_grapher.price}}
+           
+        </div>  
+
+    </div>
+  </div>
+
+   <div class="form-row">
+    <div class="col">
+                 <p >Image</p>    
+     
+
+         
+        <div class="form-group">
+          {{new_grapher.image}}
+           
+        </div>   
+
+    </div>
+    <div class="col">
+    <p >Facebook</p> 
+        <div class="form-group">
+          {{new_grapher.facebook}}
+           
+        </div>  
+
+    </div>
+  </div>
+         <div class="form-row">
+    <div class="col">
+        <p >Twitter </p> 
+         
+        <div class="form-group">
+          {{new_grapher.twitter}}
+           
+        </div>   
+
+    </div>
+    <div class="col">
+       <p >Google</p>    
+        <div class="form-group">
+          {{new_grapher.google}}
+           
+        </div>  
+
+    </div>
+  </div>
+     
+         
+  
+
+    
+      <button type="submit" class="btn btn-primary " style="margin-left:220px;">subimt</button>
+ </form>
+ </div>
+        
+
+
+
+  <!--footer-->
+ <footer class="page-footer bg-dark text-light " style="margin-top: 100px;">
+        
+    <div class="container m-1 p-2">
+        <div class="row">
+            <div class="col">
+                <h5 class="text-primary m-1 p-2">What More</h5>
+                <p>we hope that you love our website .you can communicate with us through twitter ,instagram,facebooke or even whatsapp.
+                    >we hope that you love our website .you can communicate with us through twitter ,instagram,facebooke or even whatsapp.
+                    >we hope that you love our website .you can communicate with us through twitter ,instagram,facebooke or even whatsapp.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright text-center py-3">@2023 CopyRight:
+        <a href="" class="text-primary">RittaSite.com</a>
+    </div>
+
+</footer>
+
+
+
+
+
+
+
+
+
+    <script src="{% static 'js/popper.min.js'%}"></script>
+    <script src="{% static 'js/code.jquery.com_jquery-3.7.1.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.js'%}"></script>
+    
+</body>
+</html>       

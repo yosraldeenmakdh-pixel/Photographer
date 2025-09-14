@@ -1,0 +1,176 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Photo - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png'%}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap-icons.css'%}" rel="stylesheet">
+  <link href="{% static 'css/swiper-bundle.min.css'%}" rel="stylesheet">
+  <link href="{% static 'css/glightbox.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css'%}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/ritta.css'%}" rel="stylesheet">
+  <link href="{% static 'css/paym.css'%}" rel="stylesheet">
+    <link href="{% static 'css/tailwindcss-colors.css'%}" rel="stylesheet">
+
+  
+</head>
+<body>
+ 
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top mb-5">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+
+      <a href="{%url 'grapher:home'%}" class="logo d-flex align-items-center  me-auto me-lg-0">
+        <i class="bi bi-camera"></i>
+        <h1>Photography</h1>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="{%url 'grapher:home'%}" class="active">Home</a></li>
+          <li><a href="{%url 'grapher:about'%}">About Us</a></li>
+          <li><a href="{%url 'grapher:learn'%}">Learn About PHotoGraphY</a></li>
+          <li><a href="{%url 'grapher:workshops'%}">workshops</a></li>
+          {% for item in graphers %}
+          {% if item.first == request.user.username|lower %}
+
+            <li><a href="{% url 'grapher:call' item.id %}">Call Us</a></li>
+
+          {% endif %}
+          {% endfor %}        </ul>
+      </nav><!-- .navbar -->
+
+      <div class="header-social-links">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+  </header><!-- End Header -->
+
+    <!-- start: Payment -->
+    <section class="payment-section ">
+        <div class="container " style="margin-top:100px;">
+            <div class="payment-wrapper">
+                <div class="payment-left">
+                    <div class="payment-header">
+                        <div class="payment-header-icon"><i class="ri-flashlight-fill"></i></div>
+                        <div class="payment-header-title">Order Summary</div>
+                        <p class="payment-header-description">There can be monthly or annual discounts</p>
+                    </div>
+                    <div class="payment-content">
+                        <div class="payment-body">
+                            <div class="payment-plan">
+                                <div class="payment-plan-type">Pro</div>
+                                <div class="payment-plan-info">
+                                    <div class="payment-plan-info-name">Professional Plan</div>
+                                    <div class="payment-plan-info-price">$49 per month</div>
+                                </div>
+                               
+                            </div>
+                            <div class="payment-summary">
+                                <div class="payment-summary-item">
+                                    <div class="payment-summary-name">Additional fee</div>
+                                    <div class="payment-summary-price">$10</div>
+                                </div>
+                                <div class="payment-summary-item">
+                                    <div class="payment-summary-name">Discount 20%</div>
+                                    <div class="payment-summary-price">-$10</div>
+                                </div>
+                                <div class="payment-summary-divider"></div>
+                                <div class="payment-summary-item payment-summary-total">
+                                    <div class="payment-summary-name">Total</div>
+                                    <div class="payment-summary-price">-$10</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="payment-right">
+                    <form action="" class="payment-form">
+                        <h1 class="payment-title">Payment Details</h1>
+                        <div class="payment-method">
+                            <input type="radio" name="payment-method" id="method-1" checked>
+                            <label for="method-1" class="payment-method-item">
+                                <img src="{% static 'img/visa.png'%}" alt="">
+                            </label>
+                            <input type="radio" name="payment-method" id="method-2">
+                            <label for="method-2" class="payment-method-item">
+                                <img src="{% static 'img/mastercard.png'%}" alt="">
+                            </label>
+                            <input type="radio" name="payment-method" id="method-3">
+                            <label for="method-3" class="payment-method-item">
+                                <img src="{% static 'img/paypal.png'%}" alt="">
+                            </label>
+                            <input type="radio" name="payment-method" id="method-4">
+                            <label for="method-4" class="payment-method-item">
+                                <img src="{% static 'img/stripe.png'%}" alt="">
+                            </label>
+                        </div>
+                        <div class="payment-form-group">
+                            <input type="email" placeholder=" " class="payment-form-control" id="email">
+                            <label for="email" class="payment-form-label payment-form-label-required">Email Address</label>
+                        </div>
+                        <div class="payment-form-group">
+                            <input type="text" placeholder=" " class="payment-form-control" id="card-number">
+                            <label for="card-number" class="payment-form-label payment-form-label-required">Card Number</label>
+                        </div>
+                        <div class="payment-form-group-flex">
+                            <div class="payment-form-group">
+                                <input type="date" placeholder=" " class="payment-form-control" id="expiry-date">
+                                <label for="expiry-date" class="payment-form-label payment-form-label-required">Expiry Date</label>
+                            </div>
+                            <div class="payment-form-group">
+                                <input type="text" placeholder=" " class="payment-form-control" id="cvv">
+                                <label for="cvv" class="payment-form-label payment-form-label-required">CVV</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="payment-form-submit-button"><i class="ri-wallet-line"></i> Pay</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end: Payment -->
+
+
+
+
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Photography</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+      
+        Designed by <a href="https://RRMY.com/">RRMY</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+  </body>
+
+</html>

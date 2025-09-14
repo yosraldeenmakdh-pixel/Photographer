@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="{% static 'css/style_mess.css'%}">
+</head>
+<body>
+  <h1>User questions : </h1>
+
+  <div>
+    
+    <form class="form-inline my-2 my-lg-0" method='GET'>
+      {{search.form.user.label}} {{search.form.user}}  &nbsp;&nbsp;&nbsp;&nbsp;  {{search.form.sent_at.label}} {{search.form.sent_at}}
+        <br><br>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button><br><br>
+    </form>
+  </div>
+
+  <table id="messages">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Phone Number</th>
+        <th>Message</th>
+        <th>Posting Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in query %}
+   
+        <tr>
+            <td>{{item.user.first}} {{item.user.last}}</td>
+            <td>{{item.phone_number}}</td>
+            <td>{{item.message}}</td>
+            <td>{{item.sent_at}}</td>
+        </tr>
+    
+    {% endfor %}
+    </tbody>
+  </table>
+  <br>
+
+  <div>Total number of questions : {{num_ques}}</div>
+
+  {% comment %} <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> {% endcomment %}
+  <script src="{% static 'assets/vendor/bootstrap/js/script_mess.js'%}"></script>
+</body>
+</html>

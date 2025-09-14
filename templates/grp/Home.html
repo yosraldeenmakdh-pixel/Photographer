@@ -1,0 +1,407 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Photo - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap-icons.css'%}" rel="stylesheet">
+  <link href="{% static 'css/swiper-bundle.min.css'%}" rel="stylesheet">
+  <link href="{% static 'css/glightbox.min.css'%}" rel="stylesheet">
+  <link href="{% static 'css/aos.css'%}" rel="stylesheet">
+<style>
+.navigation li{
+  list-style: none;
+  cursor: pointer;
+  margin:0 10px ;
+  border-radius: 4px;
+ 
+  padding: 3px 3px 0;
+  opacity: 0.7;
+  transition: 0.5s;
+}
+.navigation li:hover{
+  opacity: 1;
+
+
+}
+.navigation li img{
+  width: 120px;
+  transition: 0.5s;
+
+
+
+}
+.navigation li img:hover{
+  width: 200px;
+  transition: 0.5s;
+
+}
+
+.home{
+  position:relative;
+  height: 100vh;
+  width:100%;
+  justify-content:space-between;
+  display: flex;
+  align-items: center;
+  padding: 70px 10% 0;
+
+}
+.home-content{
+  max-width: 600px;
+  max-height:450px;
+  color:#000;
+}
+.home-img img{
+  max-width: 450px;
+  
+}
+
+.home-content h1{
+font-size: 56px;
+font-weight: 700;
+animation: slideRight 3s ease forwards ;
+}
+
+.home-content p span{
+color:#8d78e9;
+}
+
+.home-content p{
+  font-size: 16px;
+      animation: slideBottom 5s ease forwards ;
+
+  }
+@keyframes slideBottom{
+  0%{
+    transform:translateY(-100px);
+    opacity: 0;
+  }
+  100%{
+    transform:translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slideRight{
+  0%{
+    transform:translateX(-100px);
+    opacity: 0;
+  }
+  100%{
+    transform:translateX(0);
+    opacity: 1;
+  }
+}
+p{
+  color:#000;
+  text-align:center;
+  margin-bottom:10px;
+}
+.reveal{
+  position:relative;
+  transform:translateY(120px);
+  opacity:0;
+  transition:all 2s ease;
+}
+.reveal.active{
+  transform:translateY(0px);
+  opacity:1;
+}
+</style>
+  <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="{% static 'css/ritta.css'%}">
+    <link rel="stylesheet" href="{% static 'css/beauty.css'%}">
+   <link rel="stylesheet" href="{% static 'css/kt.css'%}">
+
+
+
+</head>
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+
+      <a href="{%url 'grapher:home'%}" class="logo d-flex align-items-center  me-auto me-lg-0">
+        <i class="bi bi-camera"></i>
+        <h1>Photography</h1>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="{%url 'grapher:home'%}"  style="--i:1" class="active">Home</a></li>
+          <li><a href="{%url 'grapher:about'%}" style="--i:2">About Us</a></li>
+          <li><a href="{%url 'grapher:learn'%}" style="--i:3">Learn About PHotoGraphY</a></li>
+          <li><a href="{%url 'grapher:workshops'%}" style="--i:5">workshops</a></li>
+          {% if request.user.is_staff %}
+          <li><a href="{% url 'grapher:questions'%}" style="--i:5">Questions</a></li>
+          {% endif %} 
+          {% for item in graphers %}
+          {% if item.first == request.user.username|lower %}
+
+            <li><a href="{% url 'grapher:call' item.id %}">Call Us</a></li>
+
+          {% endif %}
+          {% endfor %} 
+          <li><a href="{%url 'grapher:user_logout' %}" style="--i:5">Logout</a></li>
+          {% for item in graphers %}
+            {% if item.first == request.user.username|lower %}
+              <li><a href="{% url 'grapher:photographer_profile' item.id %}">{{ request.user.username|lower }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </nav><!-- .navbar -->
+
+      <div class="header-social-links">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      
+
+    </div>
+  </header><!-- End Header -->
+
+    
+    <!--hero-->
+
+    
+    <div class="wrapper mt-5 mb-5">
+        <div class="containers reveal ">
+            <input type="radio" name="slide" id="c1" checked>
+            <label for="c1" class="cards">
+                <div class="row">
+                    <div class="icon">1</div>
+                    <div class="description">
+                        <h4>Kids Photography</h4>
+                        <p>Winter has so much to offer -
+                         creative activities</p>
+                    </div>
+                </div>
+            </label>
+            
+            <input type="radio" name="slide" id="c2" >
+            <label for="c2" class="cards">
+                <div class="row">
+                    <div class="icon">2</div>
+                    <div class="description">
+                        <h4>Personal Photography</h4>
+                        <p>Gets better every day -
+                         stay tuned</p>
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c3" >
+            <label for="c3" class="cards">
+                <div class="row">
+                    <div class="icon">3</div>
+                    <div class="description">
+                        <h4>Fashion Photography</h4>
+                        <p>Help people all over the world</p>
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c4" >
+            <label for="c4" class="cards">
+                <div class="row">
+                    <div class="icon">4</div>
+                    <div class="description">
+                        <h4>Food Photography</h4>
+                        <p>Help people all over the world</p>
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c5" >
+            <label for="c5" class="cards">
+                <div class="row">
+                    <div class="icon">5</div>
+                    <div class="description">
+                        <h4>Product Photography</h4>
+                        <p>Space engineering becomes
+                         more and more advanced</p>
+                    </div>
+                </div>
+            </label>
+        </div>
+    </div>
+  
+    
+    <!--end hero-->
+  <section id="about" class="about">
+      <div class="container reveal">
+
+        <div class="row gy-4 justify-content-center mb-5">
+          <div class="col-lg-4">
+            <img src="{% static 'img/p11.jpg'%}" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-5 content p-5 mt-5">
+            <h2 class="mt-5">Professional Photographey by RRMY</h2>
+            <p class="fst-italic py-3">
+             Welcome to our photography website. On this site, we offer you many photographs that were taken with dedicated cameras and also photos that were taken with a mobile phone camera, whether of people, products
+             ,<br> children, food, or anything related to fashion. Like you, 
+             we give you an overview of photography on the learn page. about photography
+              Below we present to you a number of our distinguished candidates and advise you to 
+              <br>book an appointment with them for your next photography sessions.
+            </p>
+            </div>
+            </div>
+            </section>
+    <!--cards--> 
+    
+  <div class="container reveal"> 
+ <div class="section-header" >
+            <p style="font-weight: 20;">Here we Go...Some PHotoGrapheRs</p>
+            <p style="font-weight: 20;">this are some profiles</p>
+          </div>
+<div class="row">
+    {% for item in graphers|slice:8 %}
+
+ <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+     <div class="our-team"> 
+     <div class="picture"> 
+      <img class="img-fluid" src="{{item.image.url}}">
+       </div> 
+ <div class="team-content"> 
+ <h3 class="name">{{item.first}} {{item.last}}</h3> 
+ <h5 class="title">{{item.about}}</h5> 
+   <p style="margin-left:20px;">Take A Look At My Work:</p>
+   <a class="btn text-dark ml-1" href="{% url 'grapher:look' item.id %}">Look</a>
+
+ </div> 
+   <ul class="social"> 
+   <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook" ></a></li>
+    <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-twitter"></a></li> 
+ <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google-plus" aria-hidden="true"></a></li>
+  <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin" aria-hidden="true"></a></li>
+  </ul>
+ </div> 
+  </div> 
+  
+      {% endfor %}
+
+</div>
+ </div>
+
+  
+  </div>
+  </main><!-- End #main -->
+ <div class="container reveal text-center "  style="margin-top:140px;margin-left:40px;">
+        <p style=" margin-left:46px">If you want to see all the photographers' profiles, you can click the button <br>below and it will take you to the all profiles page.</p>
+      <a type="submit" class="btn "  href="{% url 'grapher:allprof' %}">Click Me</a>
+
+   
+  </div>
+
+    <div class="container reveal text-center "  style="margin-top:120px;margin-left:40px;">
+        <h4>How Can I Publish My Work?</h4>
+            <p  style="margin-left:46px"> If you are a photographer and want to publish your work, we welcome you to our website,<br> where you can click the button below, add your personal information, then upload <br>your photographs so that we can publish them for you    <br>  You can add your profile if you want to make people see your work and your <br>
+    amazing photos and ideas.Just click on this button</p>
+      <a type="submit" class="btn "  href="{% url 'grapher:register' %}">Add Profile</a>
+
+   
+  </div>
+
+    <div class="container reveal text-center "  style="margin-top:120px;margin-left:40px;">
+        <h4>Do you already have a profile!!</h4>
+            <p  style="margin-left:46px"> If you already have a profile in our account and you want to manage your profile<br> such as delete existing photos or add new photos <br>you just have to login   <br>  with your full name and password  <br>
+    .Just click on this button</p>
+      <a type="submit" class="btn "  href="{% url 'grapher:log' %}">Login</a>
+
+   
+  </div>
+
+  <div class="container reveal text-center "  style="margin-top:120px;margin-left:40px;">
+        <h4>You Can Also begin trainning with a photograoher! </h4>
+            <p  style="margin-left:46px"> Yes!! you can train with a photograoher..<br> where you can click the button below, add your personal information, then upload <br>your photographs so that we can publish them for you    <br>  You can add your profile if you want to make people see your work and your <br>
+    amazing photos and ideas.Just click on this button</p>
+      <a type="submit" class="btn "  href="{% url 'grapher:workshops' %}">See Workshops</a>
+
+   
+  </div>
+
+
+    <div class="container  text-center "  style="margin-top:120px;margin-left:40px;">
+        <h4 style="color:rgba(61, 199, 165, 0.897);">Email Us!!</h4>
+            <p  style="margin-left:46px"> You can send your suggestions about our websit <br> or if there is any problem you can  
+              {% for item in graphers %}
+              {% if item.first == request.user.username|lower %}
+    
+                <a type="submit" class="btn "  href="{% url 'grapher:call' item.id %}">Call Us</a>
+    
+              {% endif %}
+          {% endfor %}
+
+   
+  </div>
+
+  
+    
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="container ">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Photography</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="https://RRMY.com/">RRMY</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+       
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader">
+    <div class="line"></div>
+  </div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js'%}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js'%}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js'%}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js'%}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+       
+ <script src="{% static 'js/jQuery.js' %}"></script>
+    <script>
+     window.addEventListener('scroll',reveal);
+
+     function reveal(){
+      var reveals=document.querySelectorAll('.reveal');
+      for(var i=0;i < reveals.length;i++){
+        var windowheight=window.innerHeight;
+        var revealtop=reveals[i].getBoundingClientRect().top;
+        var revealpoint=150;
+
+        if(revealtop < windowheight-revealpoint){
+          reveals[i].classList.add('active');
+        }
+        else{
+          reveals[i].classList.remove('active');
+
+        }
+
+
+      }
+     }
+    </script>
+
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/code.jquery.com_jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    
+</body>
+</html>

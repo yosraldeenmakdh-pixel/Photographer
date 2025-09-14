@@ -1,0 +1,609 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Photo - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap-icons.css'%}" rel="stylesheet">
+  <link href="{% static 'css/swiper-bundle.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css'%}" rel="stylesheet">
+<style>
+
+.carousel-img-size{
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  
+ }
+.container .form-group label{
+  font-family: monospace;
+}
+
+
+
+section video{
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+  min-width:100%;
+  min-height: 100%;
+   width: auto;
+   height: auto;
+   z-index: 0;
+   transform: translateX(-50%) translateY(-50%);
+  
+ 
+}
+.navigation li{
+  list-style: none;
+  cursor: pointer;
+  margin:0 10px ;
+  border-radius: 4px;
+ 
+  padding: 3px 3px 0;
+  opacity: 0.7;
+  transition: 0.5s;
+}
+.navigation li:hover{
+  opacity: 1;
+
+
+}
+.navigation li img{
+  width: 120px;
+  transition: 0.5s;
+
+
+
+}
+.navigation li img:hover{
+  width: 200px;
+  transition: 0.5s;
+
+}
+.card{
+    width: 100%;
+    height: 300px;
+    transform-style: preserve-3d;
+    perspective: 500px;
+    border: none;
+    
+}
+
+.card .box{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    transform-style: preserve-3d;
+    transition: 0.3s;
+    backface-visibility: hidden;
+
+}
+
+
+.contain *{
+  margin: 0;padding: 0;
+  box-sizing: border-box;
+  text-transform: capitalize;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.contain{
+  position: relative;
+  min-height: 100vh;
+ 
+
+}
+.contain h1{
+  color: #000;
+  text-align: center;
+  padding: 15px;
+  font-size: 30px;
+}
+.contain .video-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  padding: 10px;
+
+}
+.contain .video-container .video{
+height: 250px;
+width: 350px;
+border: 5px solid #000;
+border-radius: 5px;
+box-shadow: 0 5px 15px rgba(0,0, 0,.7);
+cursor: pointer;
+overflow: hidden;
+}
+
+
+
+
+.contain .video-container .video video{
+  height:100%;
+  width: 100%;
+  object-fit: cover;
+  transition: .2s linear;
+  }
+
+
+
+
+
+.contain .video-container .video:hover video{
+ transform: scale(1.1);
+  }
+
+.contain .popup-video{
+  position: fixed;
+  top: 0;left: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  width: 100%;
+  display:none;
+
+}
+
+
+
+
+
+
+.contain .popup-video video{
+  position: absolute;
+  top: 56%;left: 50%;
+  transform: translate(-50%,-50%);
+  width: 270px;
+  border-radius: 5px;
+  border: 3px solid #000;
+  object-fit: cover;
+}
+
+
+
+
+
+
+
+.contain .popup-video span{
+  position: absolute;
+  top: 90px;right: 500px;
+  font-size: 50px;
+  color: #fff;
+  font-weight: bolder;
+  z-index: 100;
+  cursor: pointer;
+}
+@media(max-width:768px){
+  .contain .popup-video video{
+   width: 95%; 
+  }
+}
+
+
+.vidcontainer{
+width: 80%;
+margin: 80px auto;
+
+}
+.vidcontainer h4{
+  padding: 30px 0;
+  color: #000;
+  font-size: 30px;
+  text-align: center;
+}
+.vidcontainer .row{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.vidcontainer .col{
+  flex-basis: 50%;
+  min-width: 250px;
+}
+
+.feature-img{
+  width:83%;
+  margin:auto;
+  position:relative;
+  border-radius:6px;
+  overflow:hidden;
+}
+.small-img{
+  display:flex;
+  margin:20px 0;
+  background:#858fff;
+  align-items:center;
+ border-radius:6px;
+  overflow:hidden;
+
+}
+.small-img p{
+margin-left:20px;
+line-height:22px;
+font-size:15px;
+color:#000;
+}
+
+p{
+  color:#000;
+  text-align:center;
+}
+
+.video-player{
+  width:80%;
+  position:absolute;
+  left:50%;
+  top:50%;
+  display:none;
+}
+.container{
+  width:100%;
+}
+
+ .containern{ width: 300px;
+  height: 250px; 
+  position: absolute; 
+  top:0; right: 0; 
+  left: 0; bottom: 0;
+   margin-bottom: 50;
+     background-color: black; background-size: cover; 
+     cursor: pointer; -webkit-box-shadow: 0 0 5px #000; 
+     box-shadow: 0 0 5px #000; } 
+ .overlay { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr; grid-template-rows: 1fr 2fr 2fr 1fr; background: rgba(77, 77, 77, .9); color: $bg; opacity: 0; transition: all 0.5s; font-family: 'Playfair Display', serif; } 
+ .items { padding-left: 10px; letter-spacing: 3px; } .head { font-size: 30px; line-height: 40px; transform: translateY(40px); transition: all 0.7s; hr { display: block; width: 0; border: none; border-bottom: solid 2px $bg; position: absolute; bottom: 0; left:20px; transition: all .5s; } } 
+ .price { font-size: 22px; line-height: 10px; font-weight: bold; opacity: 0; transform: translateY(40px); transition: all 0.7s; .old { text-decoration: line-through; color: lighten(rgb(77, 77, 77),40%); } }
+  .cart { font-size: 12px; opacity: 0; letter-spacing: 1px; font-family: 'Lato', sans-serif; transform: translateY(40px); transition: all 0.7s; 
+  i { font-size: 16px; } span { margin-left: 10px; } } 
+.containern:hover .overlay { opacity: 1; & .head { transform: translateY(0px); } & hr { width: 75px; transition-delay: 0.4s; } & .price { transform: translateY(0px); transition-delay: 0.3s; opacity: 1; } & .cart { transform: translateY(0px); transition-delay: 0.6s; opacity: 1; } }
+
+.reveal{
+  position:relative;
+  transform:translateY(120px);
+  opacity:0;
+  transition:all 2s ease;
+}
+.reveal.active{
+  transform:translateY(0px);
+  opacity:1;
+}
+</style>
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/ritta.css'%}" rel="stylesheet">
+
+</head>
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+
+      <a href="{%url 'grapher:home'%}" class="logo d-flex align-items-center  me-auto me-lg-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <i class="bi bi-camera"></i>
+        <h1>Photography</h1>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="{%url 'grapher:home'%}" class="active">Home</a></li>
+          <li><a href="{%url 'grapher:about'%}">About Us</a></li>
+          <li><a href="{%url 'grapher:learn'%}">Learn About PHotoGraphY</a></li>
+          <li><a href="{%url 'grapher:workshops'%}">workshops</a></li>
+          {% for item in graphers %}
+          {% if item.first == request.user.username|lower %}
+
+            <li><a href="{% url 'grapher:call' item.id %}">Call Us</a></li>
+
+          {% endif %}
+          {% endfor %}        </ul>
+      </nav><!-- .navbar -->
+
+      <div class="header-social-links">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+  </header><!-- End Header -->
+  
+
+
+    <!--video slider-->
+  <div class="vidcontainer " id="vidcontainer">
+   <h4 style="color:rgba(61, 199, 165, 0.897);">Some ideas to make professional photos only with your mobile</h4>
+   <p>  You can also learn about photography tricks, which we present to you through the learn about photography page,
+    which increases your knowledge if you are a photographer or qualifies you to enter the field of
+    photography from your home and using only your mobile phone if you are a beginner.</p>
+</div>
+  <div class="contain">
+<div class="video-container" >
+
+<div class="video"><video src="{% static 'img/n2.mp4'%} "muted></video></div>
+<div class="video"><video src="{% static 'img/h.mp4'%} "muted></video></div>
+<div class="video"><video src="{% static 'img/a.mp4'%} "muted></video></div>
+<div class="video"><video src="{% static 'img/b.mp4'%} "muted></video></div>
+<div class="video"><video src="{% static 'img/ee.mp4'%} "muted></video></div>
+<div class="video"><video src="{% static 'img/n3.mp4'%} "muted></video></div>
+<div class="video"><video src="{% static 'img/v4.mp4'%} "muted></video></div>
+<div class="video"><video src="{% static 'img/v3.mp4'%} "muted></video></div>
+<div class="video"><video src="{% static 'img/v1.mp4'%} "muted></video></div>
+<div class="video"><video src="{% static 'img/v5.mp4'%} "muted></video></div>
+<div class="video"><video src="{% static 'img/v2.mp4'%} "muted></video></div>
+<div class="video"><video src="{% static 'img/n1.mp4'%} "muted></video></div>
+
+</div>
+<div class="popup-video" id="videoplayer">
+<span>&times;</span>
+  <video src="{% static 'img/n2.mp4'%} "muted autoplay controls></video>
+
+</div>
+
+</div>
+
+  <div class="vidcontainer " id="vidcontainer">
+   <p>Also you can see videos about food photography or products photography below</p>
+   <p>video gallery for <span style="color:#858fff;">Food Photographey</span></p>
+   </div>
+     <div class="contain ">
+<div class="video-container" >
+<div class="video"><video src="{% static 'img/v7.mp4'%} "muted></video></div>
+<div class="video"><video src="{% static 'img/v11.mp4'%} "muted></video></div>
+<div class="video"><video src="{% static 'img/v18.mp4'%} "muted></video></div>
+<div class="video"><video src="{% static 'img/vp.mp4'%} "muted></video></div>
+<div class="video"><video src="{% static 'img/vpp.mp4'%} "muted></video></div>
+
+
+</div>
+
+<div class="popup-video" id="videoplayer">
+<span>&times;</span>
+  <video src="{% static 'img/v7.mp4'%} "muted autoplay controls></video>
+
+</div>
+  <div class="vidcontainer " id="vidcontainer">
+   <p>video gallery for <span style="color:#858fff;">Products Photographey</span></p>
+   <p>now youcan Know the way that products have appered when you was watching Ads on TV</p>
+   </div>
+ <div class="contain reveal">
+<div class="video-container" >
+<div class="video"><video src="{% static 'img/v14.mp4'%} "muted></video></div>
+<div class="video"><video src="{% static 'img/v15.mp4'%} "muted></video></div>
+<div class="video"><video src="{% static 'img/v16.mp4'%} "muted></video></div>
+<div class="video"><video src="{% static 'img/v13.mp4'%} "muted></video></div>
+<div class="video"><video src="{% static 'img/ol.mp4'%} "muted></video></div>
+
+
+
+</div>
+
+<div class="popup-video" id="videoplayer">
+<span>&times;</span>
+  <video src="{% static 'img/v7.mp4'%} "muted autoplay controls></video>
+
+</div>
+</div>
+
+
+
+
+   <!--cameras--> 
+
+       <div class="container  m-1 mt-5 ml-5 ">
+        <h4>The 6 Best Cameras For PHotoGraphY-Fall 2024</h4>
+   
+ <pre style="font-family:monospace; font-weight: bold;">       While advanced video features are all rage on cameras,PHotoGraphY is still the bread and butter of 
+        most consumer cameras.we've bought and tested over 90 cameras in our lab,and below,you'll find our 
+        recommendations for the best digital cameras for PHotoGraphY
+ </pre>
+   <div class="row " Style="margin-bottom:300px;">
+               <div class="col-lg-6 p-1 col-md-6 col-12  ">
+          <div class="containern" style="background-image: url('{% static "img/6.jpg"%}');"><div class="overlay"> <div class = "items"></div>
+           <div class = "items head"> 
+          <p>Canon</p>  </div>  <div class="items cart">
+             <i class="fa fa-shopping-cart"></i> <p>Body Type: SLR-Style<br>
+           Sensor Size: APS-C<br>
+              Mirrorless: Yes</p> </div> </div> </div>
+                    </div>
+              
+            <div class="col-lg-6 p-1 col-md-6 col-12  ">
+              <div class="containern" style="background-image: url('{% static "img/sonm.jpg"%}');"><div class="overlay"> <div class = "items"></div>
+           <div class = "items head"> 
+          <p>Sony a7 IV</p>  </div>  <div class="items cart">
+             <i class="fa fa-shopping-cart"></i> 
+            <p>Body Type: SLR-Style<br>
+           Sensor Size: Full Frame<br>
+              Mirrorless: Yes</p>
+ </div> </div> </div>
+                    </div>
+ 
+                    
+</div>  
+      
+      <div class="row" Style="margin-bottom:300px;">
+                                      
+           <div class="col-lg-6 p-1 col-md-6 col-12  ">
+              <div class="containern" style="background-image: url('{% static "img/n50.jpg"%}');"><div class="overlay"> <div class = "items"></div>
+           <div class = "items head"> 
+          <p>Nikon Z 50</p>  </div>  <div class="items cart">
+             <i class="fa fa-shopping-cart"></i> 
+            <p>Body Type: SLR-Style<br>
+           Sensor Size: APS-C<br>
+              Mirrorless: Yes</p>
+ </div> </div> </div>
+                    </div>
+           <div class="col-lg-6 p-1 col-md-6 col-12  ">
+              <div class="containern" style="background-image: url('{% static "img/gf.jpg"%}');"><div class="overlay"> <div class = "items"></div>
+           <div class = "items head"> 
+          <p>Fujifilm X100V</p>  </div>  <div class="items cart">
+             <i class="fa fa-shopping-cart"></i> 
+        <p>Body Type: Large Sensor Compact<br>
+           Sensor Size: ASP-C<br>
+              Mirrorless: Yes</p>
+ </div> </div> </div>
+                    </div>
+      
+                
+            </div>
+            <div class="row"  Style="margin-bottom:300px;">
+                     
+           <div class="col-lg-6 p-1 col-md-6 col-12  ">
+              <div class="containern" style="background-image: url('{% static "img/nikonm.jpg"%}');"><div class="overlay"> <div class = "items"></div>
+           <div class = "items head"> 
+          <p>Nikon Z 8</p>  </div>  <div class="items cart">
+             <i class="fa fa-shopping-cart"></i> 
+        <p>Body Type: Gimbal Camerat<br>
+            Sensor Size: 1/1.7-inch<br>
+              Mirrorless: Yes</p>
+ </div> </div> </div>
+                    </div>
+    <div class="col-lg-6 p-1 col-md-6 col-12  ">
+              <div class="containern" style="background-image: url('{% static "img/ol.jpg"%}');"><div class="overlay"> <div class = "items"></div>
+           <div class = "items head"> 
+          <p>Olympus OM-D E-M10 Mark IV</p>  </div>  <div class="items cart">
+             <i class="fa fa-shopping-cart"></i> 
+           
+        <p>Body Type: Large Sensor Compact<br>
+            Sensor Size: Micro Four Thirds<br>
+              Mirrorless: Yes</p>
+ </div> </div> </div>
+                    </div>
+
+            </div>
+
+        </div>
+
+
+<div class="container "  style="margin-top:120px;margin-left:20px;margin-top:50px;">
+     <h4 >What More..</h4>
+        <h5 >Here some videos can help you to know more about choosing cameras<br>and what is the meaning of the camera charchtrastics  </h5>
+
+</div>
+<div class="container mt-5">
+<div class="video-container" >
+<div class="video" ><video src="{% static 'img/ler1.mp4'%} "muted></video></div>
+<div class="video"><video src="{% static 'img/uy33.mp4'%} "muted></video></div>
+<div class="video"><video src="{% static 'img/ler2.mp4'%} "muted></video></div>
+</div>
+
+
+<div class="popup-video" id="videoplayer">
+<span>&times;</span>
+  <video src="{% static 'img/ler1.mp4'%} "muted autoplay controls ></video>
+
+</div></div>
+
+<script>
+document.querySelectorAll('.video-container video').forEach(vid =>{
+  vid.onclick=()=>{
+    document.querySelector('.popup-video').style.display='block';
+    document.querySelector('.popup-video video').src=vid.getAttribute('src')
+    }
+
+});
+document.querySelector('.popup-video span').onclick= () => {
+  document.querySelector('.popup-video').style.display='none';
+
+}
+
+</script>
+
+
+    <script type="text/javascript">
+        function videoUrl(hm){
+            document.getElementById("slider").src=hm;
+
+        }
+
+    </script>
+
+    
+    </div>
+   </div>
+    </div>
+
+  
+
+
+
+   <!--end cameras-->   
+   
+   
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Photography</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="https://RRMY.com/">RRMY.com</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+<script>
+     window.addEventListener('scroll',reveal);
+
+     function reveal(){
+      var reveals=document.querySelectorAll('.reveal');
+      for(var i=0;i < reveals.length;i++){
+        var windowheight=window.innerHeight;
+        var revealtop=reveals[i].getBoundingClientRect().top;
+        var revealpoint=150;
+
+        if(revealtop < windowheight-revealpoint){
+          reveals[i].classList.add('active');
+        }
+        else{
+          reveals[i].classList.remove('active');
+
+        }
+
+
+      }
+     }
+    </script>
+
+
+
+    <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js'%}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js'%}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js'%}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js'%}"></script>
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+       
+
+
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/code.jquery.com_jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/popper.min.js'%}"></script>
+    <script src="{% static 'js/code.jquery.com_jquery-3.7.1.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.js'%}"></script>
+    
+</body>
+</html>
