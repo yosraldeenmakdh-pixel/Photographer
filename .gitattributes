@@ -3,6 +3,8 @@
 
 # تجاهل ملفات CSS في إحصائيات اللغة (إذا كانت غير مهمة)
 *.css linguist-vendored
+*.html linguist-vendored
+*.js linguist-vendored
 
 # تجاهل الملفات الثابتة (static) والقوالب (templates) في الإحصائيات
 static/* linguist-vendored
