@@ -1,0 +1,16 @@
+# تعيين لغة Python كلغة رئيسية للمشروع
+*.py linguist-detectable=true
+
+# تجاهل ملفات CSS في إحصائيات اللغة (إذا كانت غير مهمة)
+*.css linguist-vendored
+
+# تجاهل الملفات الثابتة (static) والقوالب (templates) في الإحصائيات
+static/* linguist-vendored
+templates/* linguist-vendored
+
+# تجاهل ملفات SQLite وغيرها من الملفات غير البرمجية
+*.sqlite3 linguist-vendored
+*.db linguist-vendored
+
+# تجاهل ملفات الإدارة (مثل manage.py) إذا لم تكن أساسية
+manage.py linguist-documentation
